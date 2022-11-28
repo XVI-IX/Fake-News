@@ -6,10 +6,14 @@ st.set_page_config(
   page_icon="🏠️"
 )
 
+st.write("# Fake News Classifier")
+
+st.image(
+  "./roman-kraft-_Zua2hyvTBk-unsplash.jpg"
+)
+
 st.markdown(
   """
-  # Fake News Classifier
-
   ## Introduction
   A type of yellow journalism, fake news encapsulates pieces of news
   that may be hoaxes and is generally spread through social media and
@@ -21,7 +25,8 @@ st.markdown(
   and users may end up in a filter bubble.
 
   ## Objective
-  The aim of this project is to build a model to accurately classify a piece of news as REAL or FAKE.
+  The aim of this project is to build a model to accurately
+   **classify** a piece of news as **REAL** or **FAKE**.
 
   ## Data Description
   This dataset has a shape of 7796 × 4. 
@@ -32,12 +37,15 @@ st.markdown(
 )
 
 df = pd.read_csv("./Model/news.csv")
-st.dataframe(df.head())
+df.drop('Unnamed: 0', inplace=True, axis=1)
+if (st.checkbox("Show Data")):
+  x = st.slider("Rows", 5, 20, 10)
+  st.dataframe(df.head(x))
 
 st.markdown(
   """
-  - title:    Represents the title of the news article.
-  - text:     The text containing the news in details
-  - label:    Classification
+  - `title`:    Represents the title of the news article.
+  - `text`:     The text containing the news in details
+  - `label`:    Classification into **REAL** or **FAKE**
   """
 )
