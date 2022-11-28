@@ -3,6 +3,11 @@ import pandas as pd
 import plotly.express as px
 from Home import df
 
+st.set_page_config(
+  page_icon="🔍️",
+  page_title="Analysis"
+)
+
 st.write("# **Dataframe**")
 x = st.slider("Rows", 0, 100, 10)
 st.write(df.head(x))
