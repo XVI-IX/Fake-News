@@ -1,6 +1,11 @@
 import streamlit as st
 from news import predict_news
 
+st.set_page_config(
+  page_icon="👨‍💻",
+  page_title="Classify"
+)
+
 
 st.write(
   """
