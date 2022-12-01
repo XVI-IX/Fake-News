@@ -20,21 +20,21 @@ def predict_news(text):
   text = np.array([text])
 
   # loading label encoder
-  with open("encoder.pkl", "rb") as handle:
+  with open("./Model/encoder.pkl", "rb") as handle:
     encoder = pickle.load(handle)
 
   # loading vectorizer
-  with open('vectorizer.pkl', 'rb') as handle:
+  with open('./Model/vectorizer.pkl', 'rb') as handle:
     vectorizer = pickle.load(handle)
 
   # loading model
-  with open('model.pkl', 'rb') as handle:
+  with open('./Model/model.pkl', 'rb') as handle:
     model = pickle.load(handle)
 
   enc_text = vectorizer.transform(text)
 
   pred = model.predict(enc_text)
 
-  return (encoder.inverse_transform(pred))
+  return (encoder.inverse_transform(pred)[0])
 
 
