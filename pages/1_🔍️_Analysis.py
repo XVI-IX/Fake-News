@@ -64,3 +64,9 @@ st.code(
     max_iter=3000, random_state=42
 )"""
   )
+
+st.write("This resulted in an accuracy of `0.9337016574585635`, and a confusion matrix of")
+st.code(
+  """array([[588,  40],
+      [ 44, 595]])""")
+
