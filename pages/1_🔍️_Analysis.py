@@ -36,20 +36,31 @@ st.plotly_chart(fig)
 st.write(
   "Since this appears to be a balanced dataset, it can be worked on without worrying about balancing it up.")
 
-fake_news = " ".join(df['text'][df['label'] == "FAKE"].str.lower())
-real_news = " ".join(df['text'][df['label'] == "REAL"].str.lower())
+if (st.checkbox("Display Word Clouds")):
+
+  fake_news = " ".join(df['text'][df['label'] == "FAKE"].str.lower())
+  real_news = " ".join(df['text'][df['label'] == "REAL"].str.lower())
 
 
-st.write("### Frequency of words in news that turned out fake")
-fig, ax = plt.subplots(figsize=(12, 8))
-ax.imshow(generate_cloud(fake_news), interpolation='bilinear')
-plt.axis("off")
+  st.write("### Frequency of words in news that turned out fake")
+  fig, ax = plt.subplots(figsize=(12, 8))
+  ax.imshow(generate_cloud(fake_news), interpolation='bilinear')
+  plt.axis("off")
 
-st.pyplot(fig)
+  st.pyplot(fig)
 
-st.write("### Frequency of words in news that turned out real")
-fig, ax = plt.subplots(figsize=(12, 8))
-ax.imshow(generate_cloud(real_news), interpolation='bilinear')
-plt.axis("off")
+  st.write("### Frequency of words in news that turned out real")
+  fig, ax = plt.subplots(figsize=(12, 8))
+  ax.imshow(generate_cloud(real_news), interpolation='bilinear')
+  plt.axis("off")
 
-st.pyplot(fig)
+  st.pyplot(fig)
+
+st.write("## Modelling")
+st.write("Using a PassiveAgressiveClassifier resulted in a model with 93.4% accuracy")
+st.code(
+  """PassiveAggressiveClassifier(
+    C=0.5, early_stopping=True,
+    max_iter=3000, random_state=42
+)"""
+  )
