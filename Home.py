@@ -1,10 +1,22 @@
 import streamlit as st
 import pandas as pd
+from wordcloud import WordCloud
 
 st.set_page_config(
   page_title="Home",
   page_icon="🏠️"
 )
+
+def generate_cloud(text):
+  """Generate a word cloud"""
+  wc = WordCloud(
+    width=600,
+    height=600,
+    max_words=2000,
+    margin=0
+  ).generate(text)
+
+  return wc
 
 st.write("# Fake News Classifier")
 

@@ -1,7 +1,8 @@
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
 import plotly.express as px
-from Home import df
+from Home import df, generate_cloud
 
 st.set_page_config(
   page_icon="🔍️",
@@ -34,3 +35,21 @@ st.plotly_chart(fig)
 
 st.write(
   "Since this appears to be a balanced dataset, it can be worked on without worrying about balancing it up.")
+
+fake_news = " ".join(df['text'][df['label'] == "FAKE"].str.lower())
+real_news = " ".join(df['text'][df['label'] == "REAL"].str.lower())
+
+
+st.write("### Frequency of words in news that turned out fake")
+fig, ax = plt.subplots(figsize=(12, 8))
+ax.imshow(generate_cloud(fake_news), interpolation='bilinear')
+plt.axis("off")
+
+st.pyplot(fig)
+
+st.write("### Frequency of words in news that turned out real")
+fig, ax = plt.subplots(figsize=(12, 8))
+ax.imshow(generate_cloud(real_news), interpolation='bilinear')
+plt.axis("off")
+
+st.pyplot(fig)
