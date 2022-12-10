@@ -31,7 +31,9 @@ and the fourth column has labels denoting whether the news is REAL or FAKE.
 
 3. PIP Dependencies - Once the virtual environment is setup and running, install the required dependencies by running:
 
-`pip install -r requirements.txt`
+```bash
+pip install -r requirements.txt
+```
 
 ### Key PIP Dependencies
 
@@ -52,7 +54,9 @@ and the fourth column has labels denoting whether the news is REAL or FAKE.
 from within the directory, ensure the virtual environment is running.
 To run the app, execute:
 
-`streamlit run Home.py`
+```bash
+streamlit run Home.py
+```
 
 ## Files
 
